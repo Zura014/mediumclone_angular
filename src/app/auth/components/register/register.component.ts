@@ -12,12 +12,18 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { authActions } from '../../store/actions';
 import { combineLatest } from 'rxjs';
+import { BackendErrorMessages } from 'src/app/shared/components/backendErrorMessages/backendErrorMessages.component';
 
 @Component({
   selector: 'mc-register',
   templateUrl: './register.component.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+    BackendErrorMessages,
+  ],
 })
 export class RegisterComponent {
   form = this.fb.nonNullable.group({
@@ -27,8 +33,8 @@ export class RegisterComponent {
   });
 
   data$ = combineLatest({
-    isSubmitting$: this.store.select(selectIsSubmitting),
-    backendErrors$: this.store.select(selectValidationErrors),
+    isSubmitting: this.store.select(selectIsSubmitting),
+    backendErrors: this.store.select(selectValidationErrors),
   });
 
   constructor(
