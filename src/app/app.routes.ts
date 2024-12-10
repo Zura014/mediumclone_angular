@@ -21,4 +21,9 @@ export const appRoutes: Routes = [
     loadChildren: () =>
       import('src/app/yourFeed/yourFeed.routes').then((m) => m.routes),
   },
+  {
+    path: 'tags/:slug',
+    loadChildren: () =>
+      import('src/app/tagFeed/tagFeed.routes').then((m) => m.routes),
+  },
 ];
