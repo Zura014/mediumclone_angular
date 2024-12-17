@@ -59,7 +59,8 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(articleActions.getArticle({ slug: this.slug }));
   }
-}
-function selectcurrentUser(state: object): unknown {
-  throw new Error('Function not implemented.');
+
+  deleteArticle(): void {
+    this.store.dispatch(articleActions.deleteArticle({ slug: this.slug }));
+  }
 }
