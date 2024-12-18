@@ -48,7 +48,7 @@ export const deleteArticleEffect = createEffect(
   { functional: true }
 );
 
-export const redirect = createEffect(
+export const redirectAfterDeleteEffect = createEffect(
   (actions$ = inject(Actions), router = inject(Router)) => {
     return actions$.pipe(
       ofType(articleActions.deleteArticleSuccess),
