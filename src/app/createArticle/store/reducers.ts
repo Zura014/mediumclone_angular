@@ -9,7 +9,7 @@ const initialState: CreateArticleStateInterface = {
 };
 
 const createArticleFeature = createFeature({
-  name: 'createaArticle',
+  name: 'createArticle',
   reducer: createReducer(
     initialState,
     on(createArticleActions.createArticle, (state) => ({
