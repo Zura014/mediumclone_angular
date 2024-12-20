@@ -108,6 +108,26 @@ export const updateCurrentUserEffect = createEffect(
   { functional: true }
 );
 
+export const logoutEffect = createEffect(
+  (
+    actions$ = inject(Actions),
+    router = inject(Router),
+    persistanceService = inject(PersistanceService)
+  ) => {
+    return actions$.pipe(
+      ofType(authActions.logout),
+      tap(() => {
+        persistanceService.set('accessToken', '');
+        router.navigateByUrl('/');
+      })
+    );
+  },
+  {
+    functional: true,
+    dispatch: false,
+  }
+);
+
 export const redirectAfterRegisterEffect = createEffect(
   (actions$ = inject(Actions), router = inject(Router)) => {
     return actions$.pipe(

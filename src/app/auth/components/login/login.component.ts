@@ -35,8 +35,7 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private store: Store) {}
 
-  onSubmit() {
-    console.log('form', this.form.getRawValue());
+  onSubmit(): void {
     const request: LoginRequestInterface = {
       user: this.form.getRawValue(),
     };
